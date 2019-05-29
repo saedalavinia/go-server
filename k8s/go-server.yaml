@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-server-deployment
+spec:
+  selector:
+    matchLabels:
+      app: go-server
+  template:
+    metadata:
+      labels:
+        app: go-server
+    spec:
+      containers:
+      - name: go-server
+        image: gcr.io/gemalto-cspeng/go-server:1.0
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
+
+
